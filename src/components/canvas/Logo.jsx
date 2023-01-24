@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useFrame } from '@react-three/fiber'
-import { Line, useCursor } from '@react-three/drei'
+import { Line, Sphere, useCursor } from '@react-three/drei'
 
 export default function Logo({ route, ...props }) {
   const router = useRouter()
@@ -20,16 +20,19 @@ export default function Logo({ route, ...props }) {
 
   return (
     <group ref={mesh} {...props}>
+    
+      {/* <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.30} /> */}
+
+      {/* <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.30} rotation={[1, 2, 1]} /> */}
       {/* @ts-ignore */}
-      <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} />
-      {/* @ts-ignore */}
-      <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} rotation={[0, 0, 1]} />
-      {/* @ts-ignore */}
-      <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} rotation={[0, 0, -1]} />
+      {/* <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.30} rotation={[1, 2, -1]} />
+       <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.30} rotation={[5, 2, 7]} /> */}
       <mesh onClick={() => router.push(route)} onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}>
         <sphereGeometry args={[0.55, 64, 64]} />
+        
         <meshPhysicalMaterial roughness={0} color={hovered ? 'hotpink' : '#1fb2f5'} />
       </mesh>
+
     </group>
   )
 }

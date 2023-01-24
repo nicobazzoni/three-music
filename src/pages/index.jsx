@@ -6,6 +6,7 @@ import Instructions from '@/components/dom/Instructions'
 // If something goes wrong go back to a static import to show the error.
 // https://github.com/pmndrs/react-three-next/issues/49
 const Logo = dynamic(() => import('@/components/canvas/Logo'), { ssr: false })
+const Boom = dynamic(() => import('@/components/canvas/Boom'), { ssr: false })
 
 // Dom components go here
 export default function Page(props) {
@@ -15,12 +16,23 @@ export default function Page(props) {
       <span className='text-cyan-200'>atoms nucleus</span> to navigate to the{' '}
       <span className='text-green-200'>/blob</span> page. OrbitControls are enabled by default.
     </Instructions>
-  )
+
+  
+   
+  
+   
+
+  ) 
+
+
 }
 
 // Canvas components go here
 // It will receive same props as the Page component (from getStaticProps, etc.)
 Page.canvas = (props) => <Logo scale={0.5} route='/blob' position-y={-1} />
+
+
+
 
 export async function getStaticProps() {
   return { props: { title: 'Index' } }
